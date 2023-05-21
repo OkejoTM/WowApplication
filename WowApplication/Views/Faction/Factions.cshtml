@@ -1,0 +1,35 @@
+﻿@model List<FactionModel>
+
+<h2>Фракции</h2>
+
+<p>
+    <a asp-action="Create">Добавить новую фракции</a>
+</p>
+<p>
+    <a asp-action="PopularFaction">Самая популярная фракции</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Столица</th>
+            <th>Описание</th>           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var faction in Model)
+        {
+            <tr>
+                <td>@faction.Name</td>
+                <td>@faction.Capital</td>
+                <td>@faction.Description</td>                                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@faction.Id">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@faction.Id">Удалить</a> |                    
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+</table>

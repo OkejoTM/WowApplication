@@ -1,0 +1,34 @@
+﻿@model List<RaceModel>
+
+<h2>Расы</h2>
+
+<p>
+    <a asp-action="Create">Добавить новую расу</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Стартовая локация</th>
+            <th>Описание</th>
+            <th>Название фракции</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var race in Model)
+        {
+            <tr>
+                <td>@race.Name</td>
+                <td>@race.StartLocation</td>
+                <td>@race.Description</td>
+                <td>@race.Faction.Name</td>                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@race.Id">Редактировать</a> |
+                    <a asp-action="Delete" asp-route-id="@race.Id">Удалить</a> |                    
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+</table>
